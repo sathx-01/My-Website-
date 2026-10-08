@@ -65,6 +65,17 @@ input[type=range]{width:min(420px,90%);accent-color:var(--rose);cursor:pointer;m
 </style>
 </head>
 <body>
+  <div id="lockScreen" style="text-align:center; padding:50px;">
+    <h2>Enter Password</h2>
+
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="checkPassword()">Enter</button>
+
+    <p id="error" style="color:red;"></p>
+</div>
+
+<div id="mainWebsite" style="display:none;">
 <div id="app">
 <div class="orbs"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="particle p1"></i><i class="particle p2"></i><i class="particle p3"></i><i class="particle p4"></i><i class="particle p5"></i></div>
 <div class="noise"></div>
@@ -151,6 +162,20 @@ const blow=document.getElementById('blow');
 blow.addEventListener('input',()=>{if(+blow.value>=96){document.getElementById('cakeEmoji').textContent='🍰';document.getElementById('candleText').textContent='Wish made. ✨ May it find its way to you.';document.getElementById('cakeNext').classList.remove('hidden');blow.disabled=true}})
 function photoShow(n){idx=Math.max(0,Math.min(2,n));go('photos');document.getElementById('photo').src=photos[idx];document.getElementById('count').textContent=`Memory ${idx+1} of 3`;document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===idx));document.getElementById('prev').classList.toggle('hidden',idx===0);document.getElementById('next').textContent=idx===2?'Read my message ❤️':'Next memory ✨'}
 function nextPhoto(){if(idx===2)go('letter');else photoShow(idx+1)}
+</script>
+  </div>
+
+<script>
+function checkPassword() {
+    var password = document.getElementById("password").value;
+
+    if (password === "chitti1011") {
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainWebsite").style.display = "block";
+    } else {
+        document.getElementById("error").innerText = "Wrong password";
+    }
+}
 </script>
 </body>
 </html>
